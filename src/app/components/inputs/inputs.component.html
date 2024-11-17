@@ -1,0 +1,23 @@
+<div class="inputs">
+    <div>
+      <label>Correo</label>
+      <input type="email" [(ngModel)]="email" />
+      <p *ngIf="emailValid !== null" [ngClass]="{ valid: emailValid, invalid: !emailValid }">
+        {{ emailValid ? 'Correcto!' : 'Correo inválido' }}
+      </p>
+    </div>
+  
+    <div>
+      <label>Contraseña</label>
+      <input type="password" [(ngModel)]="password" />
+      <p *ngIf="passwordValid !== null" [ngClass]="{ valid: passwordValid, invalid: !passwordValid }">
+        {{ passwordValid ? 'Correcta!' : 'Contraseña débil, use una mayúscula' }}
+      </p>
+    </div>
+  
+    <div>
+      <label>Texto</label>
+      <input type="text" [(ngModel)]="text" />
+    </div>
+  </div>
+  
