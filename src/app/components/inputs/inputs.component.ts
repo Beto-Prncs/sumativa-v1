@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { InputContrasenaComponent } from './input-contrasena/input-contrasena.component';
 import { InputEmailComponent } from './input-email/input-email.component';
 import { InputTextoComponent } from './input-texto/input-texto.component';
@@ -14,23 +14,31 @@ import { CommonModule } from '@angular/common';
   styleUrl: './inputs.component.css'
 })
 export class InputsComponent {
-  email: string = '';
-  password: string = '';
-  text: string = '';
+  @Input() email: string = '';
+  @Output() emailChange: EventEmitter<string> = new EventEmitter<string>();
 
-  emailValid: boolean | null = null;
-  passwordValid: boolean | null = null;
+  @Input() password: string = '';
+  @Output() passwordChange: EventEmitter<string> = new EventEmitter<string>();
 
-  validateInputs() {
-    this.emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
-    this.passwordValid = this.password.length >= 8 && /[A-Z]/.test(this.password);
+  @Input() text: string = '';
+  @Output() textChange: EventEmitter<string> = new EventEmitter<string>();
+
+  // Validaciones opcionales
+  @Input() emailValid: boolean | null = null;
+  @Input() passwordValid: boolean | null = null;
+
+  // Métodos para emitir cambios
+  onEmailChange(): void {
+    this.emailChange.emit(this.email);
+    this.emailValid = this.email.includes('@'); // Validación de ejemplo
   }
 
-  clearInputs() {
-    this.email = '';
-    this.password = '';
-    this.text = '';
-    this.emailValid = null;
-    this.passwordValid = null;
+  onPasswordChange(): void {
+    this.passwordChange.emit(this.password);
+    this.passwordValid = this.password.length >= 8; // Validación de ejemplo
+  }
+
+  onTextChange(): void {
+    this.textChange.emit(this.text);
   }
 }

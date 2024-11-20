@@ -4,11 +4,22 @@
   </header>
   <main>
     <section class="control-panel">
-      <app-buttons></app-buttons>
-      <app-inputs></app-inputs>
+      <app-buttons ></app-buttons>
+      <app-inputs
+      [(email)]="email"
+      [(password)]="password"
+      [(text)]="text"
+    ></app-inputs>
+  
     </section>
     <section class="visualizer">
-      <app-visualizer></app-visualizer>
+      
+  
+    <app-visualizer
+      [email]="email"
+      [password]="password"
+      [text]="text"
+    ></app-visualizer>
     </section>
   </main>
 </div>

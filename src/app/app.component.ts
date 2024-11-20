@@ -12,5 +12,33 @@ import { VisualizerComponent } from './components/visualizer/visualizer.componen
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'myapp';
+  email: string = '';
+  password: string = '';
+  text: string = '';
+
+  // Referencia al componente visualizador
+  animateVisualizer: any;
+
+  handleAccept() {
+    // Actualiza datos ingresados
+    this.animateVisualizer.email = this.email;
+    this.animateVisualizer.password = this.password;
+    this.animateVisualizer.text = this.text;
+
+    // Activa animación
+    this.animateVisualizer.animateSquare();
+  }
+  isDarkMode = false;  // Variable para controlar el modo oscuro
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+  
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+      console.log('Modo oscuro activado');
+    } else {
+      document.body.classList.remove('dark-mode');
+      console.log('Modo oscuro desactivado');
+    }
+  }
 }

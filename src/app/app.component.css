@@ -1,21 +1,36 @@
+/* Estilo normal */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f0f0f0;
-    color: #000;
-  
-}  
-  body.dark-theme {
-    background-color: #333;
-    color: #f4f4f4;
-  }
-  
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo modo oscuro */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+/* Estilo de los contenedores */
+.container {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo de los contenedores en modo oscuro */
+.dark-mode .container {
+  background-color: #333;
+  color: white;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+}
   
   header {
     text-align: center;

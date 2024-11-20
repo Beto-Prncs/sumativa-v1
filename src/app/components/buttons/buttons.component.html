@@ -1,8 +1,9 @@
 <div class="buttons">
-    <button class="aceptar" (click)="onAccept()">Aceptar</button>
-    <button class="cancelar" (click)="onCancel()">Cancelar</button>
-    <button class="primario" (click)="visualizer.triggerAnimation()">Primario</button>
-    <button class="secundario" (click)="visualizer.triggerAnimation()">Secundario</button>
-    <button class="modo-oscuro" (click)="toggleTheme()">🌙</button>
-  </div>
-  
+  <button class="aceptar" (click)="handleAccept()">Aceptar</button>
+  <button class="cancelar">Cancelar</button>
+  <button class="primario">Primario</button>
+  <button class="secundario">Secundario</button>
+  <button (click)="toggleDarkMode()">
+    🌙
+  </button>
+</div>

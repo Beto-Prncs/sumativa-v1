@@ -1,44 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ButtonInicioComponent } from './button-inicio/button-inicio.component';
 import { ButtonPrimarioComponent } from './button-primario/button-primario.component';
 import { ButtonSecundarioComponent } from './button-secundario/button-secundario.component';
 import { ButtonAceptarComponent } from './button-aceptar/button-aceptar.component';
 import { ButtonCancelarComponent } from './button-cancelar/button-cancelar.component';
 import { ButtonModoOscuroComponent } from './button-modo-oscuro/button-modo-oscuro.component';
-import { InputsComponent } from '../inputs/inputs.component';
-import { VisualizerComponent } from '../visualizer/visualizer.component';
 
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [ButtonInicioComponent, ButtonPrimarioComponent, ButtonSecundarioComponent, ButtonAceptarComponent, ButtonCancelarComponent, ButtonModoOscuroComponent, InputsComponent,VisualizerComponent],
+  imports: [ButtonInicioComponent, ButtonPrimarioComponent, ButtonSecundarioComponent, ButtonAceptarComponent, ButtonCancelarComponent, ButtonModoOscuroComponent],
   templateUrl: './buttons.component.html',
   styleUrl: './buttons.component.css'
 })
 export class ButtonsComponent {
-  isDarkMode: boolean = false;
-  constructor(
-    public inputs: InputsComponent,
-    public visualizer: VisualizerComponent
-  ) {}
+  isDarkMode = false;
 
-  onAccept() {
-    this.inputs.validateInputs();
-    this.visualizer.triggerAnimation();
-  }
-
-  onCancel() {
-    this.inputs.clearInputs();
-    this.visualizer.triggerAnimation();
-  }
-  toggleTheme() {
+  toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
 
-    // Cambia las clases del tema en el <body>
+    // Cambia el modo oscuro en el body globalmente
     if (this.isDarkMode) {
-      document.body.classList.add('dark-theme');
+      document.body.classList.add('dark-mode');  // Añade la clase dark-mode al body
     } else {
-      document.body.classList.remove('dark-theme');
+      document.body.classList.remove('dark-mode');  // Elimina la clase dark-mode del body
     }
+  }
+  @Output() onAccept = new EventEmitter<void>();
+
+  handleAccept() {
+    this.onAccept.emit();
   }
 }
